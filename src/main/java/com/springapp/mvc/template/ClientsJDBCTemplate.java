@@ -23,9 +23,7 @@ public class ClientsJDBCTemplate implements ClientsDAO {
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }
 
-    public List<Map<String, Object>> getList() {
-        return this.jdbcTemplateObject.queryForList("select * from vw_polstateunearned where 1=1 order by icomp,invdate,invno");
-    }
+
 
     public Clients getClient(Integer cid) {
 
@@ -35,6 +33,42 @@ public class ClientsJDBCTemplate implements ClientsDAO {
         return client;
     }
 
+
+    public List<Map<String, Object>> getIcompsList() {
+        String sqlQuery=sqlQuery = "select * from inscomp";
+
+        return this.jdbcTemplateObject.queryForList(sqlQuery);
+    }
+
+
+    public List<Map<String, Object>> getList(String icomp ,String psta ) {
+        String sqlQuery="";
+        if (icomp.equals("ALL")) {
+            sqlQuery = "select * from vw_polstateunearned where 1=1 order by icomp,invdate,invno";
+
+            if (psta.equals("ALL")){
+                //do not change the query
+
+            }
+            else {
+                sqlQuery= "select * from vw_polstateunearned where 1=1 and psta=" + psta + "  order by icomp,invdate,invno";
+            }
+        }
+        else {
+            sqlQuery = "select * from vw_polstateunearned where 1=1 and icomp=" + icomp + " order by icomp,invdate,invno";
+
+            if (psta.equals("ALL")){
+                //do not change the query
+
+            }
+            else {
+                sqlQuery="select * from vw_polstateunearned where 1=1 and icomp=" + icomp + "and psta=" + psta + " order by icomp,invdate,invno";
+            }
+        }
+
+
+        return this.jdbcTemplateObject.queryForList(sqlQuery);
+    }
 
     public void delete(int cid) {
         String SQL = "delete * from clients where cid=?";
