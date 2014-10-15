@@ -57,6 +57,7 @@
     <orderEntry type="library" name="taglibs-standard-jstlel-1.2.1-sources" level="project" />
     <orderEntry type="library" name="taglibs-standard-impl-1.2.1" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.6" level="project" />
+    <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.8.1" level="project" />
     <orderEntry type="library" name="Maven: javax.servlet:jstl:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:3.2.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.1.1" level="project" />
@@ -85,6 +86,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit-dep:4.8.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:3.2.7.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:3.2.7.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.google.appengine:appengine-api-stubs:1.8.7" level="project" />
   </component>
 </module>
 

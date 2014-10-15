@@ -21,7 +21,7 @@
 
 <body>
 
-
+<h1>${message1}</h1>
 <div>
     <form:form method="GET" action="get_questions">
         <table>
