@@ -4,11 +4,24 @@ package com.springapp.mvc;
  * Created by bildad on 15/10/14.
  */
 public class Question {
-    private int question_id;
-    private String question;
-    private String company_name;
-    private int page_number;
+    private String question_id="none";
+    private String question="none";
+    private String company_name="none";
+    private int page_number=-1;
 
+    public Question(String question_id,String question, int page_number)
+    {
+        if(!question_id.isEmpty()) {
+            this.question_id = question_id;
+        }
+        if (!question.isEmpty()) {
+            this.question = question;
+        }
+        if (!question.isEmpty()) {
+            this.page_number = page_number;
+        }
+        this.company_name="null";
+    }
     public void setCompany_name(String company_name) {
         this.company_name = company_name;
     }
@@ -21,7 +34,7 @@ public class Question {
         this.question = question;
     }
 
-    public void setQuestion_id(int question_id) {
+    public void setQuestion_id(String question_id) {
         this.question_id = question_id;
     }
 
@@ -29,7 +42,7 @@ public class Question {
         return page_number;
     }
 
-    public int getQuestion_id() {
+    public String getQuestion_id() {
         return question_id;
     }
 

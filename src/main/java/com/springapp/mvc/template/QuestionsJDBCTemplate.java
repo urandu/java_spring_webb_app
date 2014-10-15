@@ -22,7 +22,7 @@ public class QuestionsJDBCTemplate implements QuestionsDAO {
         this.jdbcTemplateObject = new JdbcTemplate(dataSource);
     }
 
-    public Question getQuestion(int question_id)
+    public Question getQuestion(String question_id)
     {
         String SQL = "select * from questions where question_id = ? limit 1";
         Question question = jdbcTemplateObject.queryForObject(SQL,
@@ -39,7 +39,7 @@ public class QuestionsJDBCTemplate implements QuestionsDAO {
         return questions;
     }
 
-    public void delete(int question_id) {
+    public void delete(String question_id) {
         String SQL = "delete * from questions where cid=?";
 
         jdbcTemplateObject.update( SQL, question_id);
@@ -48,7 +48,7 @@ public class QuestionsJDBCTemplate implements QuestionsDAO {
     }
 
 
-    public void create(int question_id,String question,String company_name,int page_number) {
+    public void create(String question_id,String question,String company_name,int page_number) {
         String SQL = "insert into questions ( question_id,question,company_name,page_number) values (?, ?, ?,?)";
 
         jdbcTemplateObject.update( SQL, question_id, question, company_name,page_number);

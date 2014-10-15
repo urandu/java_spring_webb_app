@@ -21,14 +21,14 @@ public interface QuestionsDAO {
      * a record in the Student table.
      */
 
-    public Question getQuestion(int question_id);
+    public Question getQuestion(String question_id);
 
 
     public List<Question> listQuestions(int page_number);
 
-    public void delete(int question_id) ;
+    public void delete(String question_id) ;
 
-    public void create(int question_id,String question,String company_name,int page_number) ;
+    public void create(String question_id,String question,String company_name,int page_number) ;
 
 
 }

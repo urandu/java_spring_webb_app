@@ -11,11 +11,10 @@ import java.sql.SQLException;
  */
 public class QuestionsMapper implements RowMapper<Question> {
     public Question mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Question question = new Question();
-        question.setQuestion_id(rs.getInt("question_id"));
-        question.setQuestion(rs.getString("question"));
+        Question question = new Question(rs.getString("question_id"),rs.getString("question"),rs.getInt("page_number"));
+
         question.setCompany_name(rs.getString("company_name"));
-        question.setPage_number(rs.getInt("page_number"));
+
 
 
         return question;

@@ -41,7 +41,38 @@
 
 
 </div>
+<div>
 
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>Question ID</td>
+            <td>Question</td>
+            <td>Company that asked the question</td>
+        </tr>
+        </thead>
+
+    <c:forEach var="col" items="${questions}">
+
+
+       <tr>
+            <td>
+                    ${col.question_id}
+            </td>
+            <td>
+                    ${col.question}
+            </td>
+            <td>
+                    ${col.company_name}
+            </td>
+
+        </tr>
+
+
+    </c:forEach>
+
+    </table>
+</div>
 </body>
 
 
