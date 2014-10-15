@@ -13,12 +13,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/last")
 public class HelloController {
     @InitBinder
     private void dateBinder(WebDataBinder binder) {
