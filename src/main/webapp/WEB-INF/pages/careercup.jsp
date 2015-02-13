@@ -4,7 +4,7 @@
 <html>
 
 <head>
-    <title>Reports</title>
+    <title>CareerCup questions</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="bootstrap/js/bootstrap.js"></script>
@@ -19,15 +19,15 @@
 </head>
 
 
-<body>
+<body class="span12" >
+<h4>Questions on page ${page_num}</h4>
 
-<h1>${message1}</h1>
 <div>
     <form:form method="GET" action="get_questions">
         <table>
 
             <tr>
-                <td><form:label path="page_number">Page Number</form:label></td>
+                <td><form:label path="page_number"><h3>Page Number</h3></form:label></td>
                 <td><form:input path="page_number" ></form:input></td> &nbsp;&nbsp;
                 <td colspan="2">
                     <input type="submit" value="LOAD"/>
@@ -41,7 +41,7 @@
 
 
 </div>
-<div>
+<div class="span12">
 
     <table class="table table-bordered">
         <thead>

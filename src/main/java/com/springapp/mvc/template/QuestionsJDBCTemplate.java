@@ -8,9 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 import java.util.List;
 
-/**
- * Created by bildad on 15/10/14.
- */
+
 public class QuestionsJDBCTemplate implements QuestionsDAO {
 
     private DataSource dataSource;

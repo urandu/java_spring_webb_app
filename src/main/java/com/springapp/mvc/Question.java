@@ -1,8 +1,6 @@
 package com.springapp.mvc;
 
-/**
- * Created by bildad on 15/10/14.
- */
+
 public class Question {
     private String question_id="none";
     private String question="none";

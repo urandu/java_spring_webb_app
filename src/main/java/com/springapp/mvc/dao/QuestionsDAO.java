@@ -5,9 +5,7 @@ import com.springapp.mvc.Question;
 import javax.sql.DataSource;
 import java.util.List;
 
-/**
- * Created by bildad on 15/10/14.
- */
+
 public interface QuestionsDAO {
 
 

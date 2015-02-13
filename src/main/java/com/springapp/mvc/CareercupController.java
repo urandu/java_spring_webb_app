@@ -22,7 +22,7 @@ import java.util.Date;
 
 @Controller
 @RequestMapping("/")
-public class QuestionsController {
+public class CareercupController {
     @InitBinder
     private void dateBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -42,19 +42,19 @@ public class QuestionsController {
 
         if (questionsJDBCTemplate.listQuestions(1).isEmpty())
         {
-            model.addAttribute("message", "Hello world!");
+            model.addAttribute("message", "Content is empty!");
         }
 
 
 
-        model.addAttribute("command",new Page_number());
+        model.addAttribute("command",new Page_no());
 
-        return "questions";
+        return "careercup";
     }
 
 
     @RequestMapping(value = "/get_questions", method = RequestMethod.GET)
-    public String get_questions(@ModelAttribute("page_number")Page_number page_number,
+    public String get_questions(@ModelAttribute("page_number")Page_no page_number,
                              ModelMap model) {
 
         ApplicationContext context =
@@ -65,19 +65,23 @@ public class QuestionsController {
 
         int page_no=page_number.getPage_number();
 
+        if (page_no==0)
+        {
+            page_no=1;
+        }
+
         if (questionJDBCTemplate.listQuestions(page_no).isEmpty()) {
 
-            ///uncomment the below lines if you are using a proxy...
-           /* System.setProperty("http.proxyHost", "proxy.uonbi.ac.ke");
-            System.setProperty("http.proxyPort", "80");
-*/
+            ///uncomment the below lines if you are behind a proxy...
+            /*System.setProperty("http.proxyHost", "proxy.uonbi.ac.ke");
+            System.setProperty("http.proxyPort", "80");*/
             Document doc;
             int i = 0;
             Question[] questions = new Question[30];
             try {
 
                 // need http protocol
-                doc = Jsoup.connect("http://www.careercup.com/page?n=" + page_no).timeout(60000).get();
+                doc = Jsoup.connect("http://www.careercup.com/page?n=" + page_no).timeout(120000).get();
 
                 // get page title
                 String title = doc.title();
@@ -107,12 +111,12 @@ public class QuestionsController {
                 }
 
                 Elements companies = doc.getElementsByClass("company").select("img");
-                //Elements links = doc.select("a[href]");
+
                 i = 0;
                 for (Element company : companies) {
 
 
-                    // get the value from href attribute
+
                     System.out.println("\nlink : " + company.attr("title").replace("-interview-questions", ""));
                     System.out.println("text : " + company.text());
                     questions[i].setCompany_name(company.attr("title").replace("-interview-questions", ""));
@@ -134,50 +138,21 @@ public class QuestionsController {
 
         }
 
-       /* else
-        {*/
-            model.addAttribute("command",new Page_number());
+
+            model.addAttribute("command",new Page_no());
             model.addAttribute("questions", questionJDBCTemplate.listQuestions(page_no));
-       // }
-
-        /*String icomp = report1Filters.getIcomp();
-        String renewal = report1Filters.getRenewal();
-        model.addAttribute("report1", clientJDBCTemplate.getList(icomp, renewal));
-        model.addAttribute("icomp",icomp);
-        model.addAttribute("renewal",renewal);
-        model.addAttribute("dateFrom",report1Filters.getDateFrom());
-        model.addAttribute("dateTo",report1Filters.getDateTo());*/
 
 
-        return "questions";
+
+        model.addAttribute("page_num",page_no);
+
+        return "careercup";
     }
 
 
 
 
-    @RequestMapping(value = "/page", method = RequestMethod.GET)
-    public String addStudent(@ModelAttribute("page_number")Page_number page_number,
-                             ModelMap model) {
 
-        ApplicationContext context =
-                new ClassPathXmlApplicationContext("Beans.xml");
-
-        QuestionsJDBCTemplate questionJDBCTemplate =
-                (QuestionsJDBCTemplate) context.getBean("questionsJDBCTemplate");
-
-        int page_no=page_number.getPage_number();
-
-        /*String icomp = report1Filters.getIcomp();
-        String renewal = report1Filters.getRenewal();
-        model.addAttribute("report1", clientJDBCTemplate.getList(icomp, renewal));
-        model.addAttribute("icomp",icomp);
-        model.addAttribute("renewal",renewal);
-        model.addAttribute("dateFrom",report1Filters.getDateFrom());
-        model.addAttribute("dateTo",report1Filters.getDateTo());*/
-
-
-        return "report1_result";
-    }
 
 
 

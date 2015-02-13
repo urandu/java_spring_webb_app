@@ -6,9 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by bildad on 15/10/14.
- */
+
 public class QuestionsMapper implements RowMapper<Question> {
     public Question mapRow(ResultSet rs, int rowNum) throws SQLException {
         Question question = new Question(rs.getString("question_id"),rs.getString("question"),rs.getInt("page_number"));
