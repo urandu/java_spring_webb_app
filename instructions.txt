@@ -1,0 +1,6 @@
+1. Go to my sql and create a database called : questions
+2. Import the create_user.sql script into the database you have created.
+3. Import the questions.sql script into the questions database.
+4. Start your eclipse IDE and import the careercup.war file as a project or deploy the careercup.war file onto Tomcat webserver directly without using eclipse.
+5. If you chose option 1 in 4 above, run the application on eclipse.
+    And you are done!
